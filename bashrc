@@ -32,6 +32,10 @@ function gcb () { # example call: gcb "exampleBranch"
     git checkout -b $1
 }
 
+function curr_branch () {
+    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
+}
+
 function up_w_main () {
     export mainbranch='main'
     export currbranch=$(curr_branch)
