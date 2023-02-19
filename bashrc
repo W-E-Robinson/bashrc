@@ -42,4 +42,3 @@ function up_w_main () {
     git switch $mainbranch && git pull && git switch $currbranch && git merge $mainbranch
 }
 
-
