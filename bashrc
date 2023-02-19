@@ -28,7 +28,7 @@ function gacp () { # example call: gacp "example commit message"
     git add -A && git commit -m "$1" && git push
 }
 
-function gcb () { # example call: gcb "exampleBranch"
+function gcb () { # example call: gcb exampleBranch
     git checkout -b $1
 }
 
