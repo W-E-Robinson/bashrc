@@ -3,7 +3,6 @@ alias n.='nvim .'
 
 alias gst='git status'
 alias gs='git switch'
-alias glog='git log --oneline --graph'
 alias gb='git branch'
 alias gpl='git pull'
 alias gps='git push'
@@ -11,7 +10,6 @@ alias ga='git add -A'
 alias gm='git merge'
 alias gsta='git stash'
 alias gstau='git stash --include-untracked'
-alias gr='git reflog'
 
 function gc () { # example call: gc "example commit message"
     git commit -m "$1"
@@ -50,9 +48,18 @@ function up_w_main () {
 }
 
 function begin_bisect () { # example call: begin_bisect 6f35f8c
-    git bisect start && git bisect bad && git bisect good $1
+    clear && git bisect start && git bisect bad && git bisect good $1
 }
 
 function grep_log () { # example call: grep_log "redux"
     clear && git log --all -i --no-merges --pretty=medium --source --name-only --grep="$1"
+}
+
+function glog_full () {
+    clear && git log --oneline --graph
+}
+
+function glog () {
+    export currbranch=$(curr_branch)
+    clear && git log --oneline main..$(curr_branch)
 }
