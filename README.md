@@ -1,1 +1,1 @@
-## My bashrc file. - test - 2
+## My bashrc file.
