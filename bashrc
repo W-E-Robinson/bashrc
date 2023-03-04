@@ -4,6 +4,7 @@ alias n.='nvim .'
 alias gst='git status'
 alias gs='git switch'
 alias gb='git branch'
+alias gd='git diff'
 alias gpl='git pull'
 alias gps='git push'
 alias ga='git add -A'
@@ -60,6 +61,7 @@ function glog_full () {
 }
 
 function glog () {
+    export mainbranch='main'
     export currbranch=$(curr_branch)
-    clear && git log --oneline main..$(curr_branch)
+    clear && git log --oneline $mainbranch..$curr_branch
 }
