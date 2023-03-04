@@ -6,7 +6,6 @@ alias gs='git switch'
 alias gb='git branch'
 alias gd='git diff'
 alias gpl='git pull'
-alias gps='git push'
 alias ga='git add -A'
 alias gm='git merge'
 alias gsta='git stash'
@@ -64,4 +63,8 @@ function glog () {
     export mainbranch='main'
     export currbranch=$(curr_branch)
     clear && git log --oneline $mainbranch..$curr_branch
+}
+
+function gps () {
+    git fetch && git push
 }
