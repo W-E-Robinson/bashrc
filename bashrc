@@ -62,7 +62,7 @@ function glog_full () {
 function glog () {
     export mainbranch='main'
     export currbranch=$(curr_branch)
-    clear && git log --oneline $mainbranch..$curr_branch
+    clear && git log --oneline $mainbranch...$curr_branch
 }
 
 function gps () {
