@@ -6,10 +6,13 @@ alias gs='git switch'
 alias gb='git branch'
 alias gd='git diff'
 alias gpl='git pull'
+alias gps='git push'
 alias ga='git add -A'
 alias gm='git merge'
 alias gsta='git stash'
 alias gstau='git stash --include-untracked'
+alias gr='git reflog'
+alias gf='git fetch'
 
 function gc () { # example call: gc "example commit message"
     git commit -m "$1"
@@ -62,9 +65,9 @@ function glog_full () {
 function glog () {
     export mainbranch='main'
     export currbranch=$(curr_branch)
-    clear && git log --oneline $mainbranch...$curr_branch
+    clear && git fetch && git log --oneline $mainbranch...$curr_branch
 }
 
-function gps () {
-    git fetch && git push
+function output_reflog () {
+    git reflog * > ~/Desktop/output_reflog_$(date +"%Y-%m-%d_%H:%M:%S").txt
 }
