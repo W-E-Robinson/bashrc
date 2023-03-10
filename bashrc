@@ -6,7 +6,6 @@ alias gs='git switch'
 alias gb='git branch'
 alias gd='git diff'
 alias gpl='git pull'
-alias gps='git push'
 alias ga='git add -A'
 alias gm='git merge'
 alias gsta='git stash'
@@ -14,12 +13,16 @@ alias gstau='git stash --include-untracked'
 alias gr='git reflog'
 alias gf='git fetch'
 
+function gps () {
+    git fetch && git push
+}
+
 function gc () { # example call: gc "example commit message"
     git commit -m "$1"
 }
 
 function gcp () { # example call: gcp "example commit message"
-    git commit -m "$1" && git push
+    git commit -m "$1" && git fetch && git push
 }
 
 function gac () { # example call: gac "example commit message"
@@ -27,7 +30,7 @@ function gac () { # example call: gac "example commit message"
 }
 
 function gacp () { # example call: gacp "example commit message"
-    git add -A && git commit -m "$1" && git push
+    git add -A && git commit -m "$1" && git fetch && git push
 }
 
 function gcb () { # example call: gcb exampleBranch
@@ -71,3 +74,4 @@ function glog () {
 function output_reflog () {
     git reflog * > ~/Desktop/output_reflog_$(date +"%Y-%m-%d_%H:%M:%S").txt
 }
+
