@@ -53,6 +53,11 @@ function up_w_main () {
     git switch $mainbranch && git pull && git switch $currbranch && git merge $mainbranch
 }
 
+function gsm () {
+    export mainbranch='main'
+    git switch $mainbranch && git pull
+}
+
 function begin_bisect () { # example call: begin_bisect 6f35f8c
     clear && git bisect start && git bisect bad && git bisect good $1
 }
